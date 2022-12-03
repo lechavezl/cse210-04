@@ -6,8 +6,6 @@ class Artifact(Actor):
     def __init__(self):
         super().__init__()
         self._message = ""
-        
-        self._artifacs = ["@", "#", "$", "&", "*", "C", "E", "F", "+", "[]"]
     
     def set_message(self, message):
         self._message = message

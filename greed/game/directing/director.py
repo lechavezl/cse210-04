@@ -59,8 +59,9 @@ class Director:
         for artifact in artifacts:
             artifact.move_next(900, 600)
             if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()# TENGO QUE COLOCAR ESTO FUERA DEL IF PARA QUE SIEMPRE MUESTRE EL RESULTADO AQUI TENGO QUE BUSCAR UNA FORMA DE SUMAR LOS PUNTOS CUANDO CAIGAN LOS ARTIFACS SOBRE EL ROBOT
-                banner.set_text(message)
+                artifact = cast.remove_actor("artifacts", artifact)
+                # message = artifact.get_message()# TENGO QUE COLOCAR ESTO FUERA DEL IF PARA QUE SIEMPRE MUESTRE EL RESULTADO AQUI TENGO QUE BUSCAR UNA FORMA DE SUMAR LOS PUNTOS CUANDO CAIGAN LOS ARTIFACS SOBRE EL ROBOT
+                # banner.set_text(message)
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
