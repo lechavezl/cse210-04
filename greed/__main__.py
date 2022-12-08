@@ -51,16 +51,13 @@ def main():
     robot.set_color(WHITE)
     robot.set_position(position)
     cast.add_actor("robots", robot)
-    
-    # create the artifacts
-    # with open(DATA_PATH) as file:
-    #     data = file.read()
-    #     messages = data.splitlines()
 
+    # create the artifacts
     for n in range(DEFAULT_ARTIFACTS):
-        figures = ["▯", "*"]
+        gem = "*"
+        rock = "▯"
+        figures = [gem, rock]
         text = random.choice(figures)
-        # message = messages[n]
 
         x = random.randint(1, COLS - 1)
         y = random.randint(1, ROWS - 1)
@@ -77,7 +74,6 @@ def main():
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
-        # artifact.set_message(message)
         artifact.set_velocity(Point(0, 1))
         cast.add_actor("artifacts", artifact)
     

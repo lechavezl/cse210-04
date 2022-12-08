@@ -1,3 +1,5 @@
+from game.casting.artifact import Artifact
+
 class Director:
     """A person who directs the game. 
     
@@ -17,6 +19,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self._total_points = 0
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -39,7 +42,7 @@ class Director:
         """
         robot = cast.get_first_actor("robots")
         velocity = self._keyboard_service.get_direction()
-        robot.set_velocity(velocity)        
+        robot.set_velocity(velocity)
 
     def _do_updates(self, cast):
         """Updates the robot's position and resolves any collisions with artifacts.
@@ -56,12 +59,15 @@ class Director:
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
         
+        artifac = Artifact()
         for artifact in artifacts:
+
             artifact.move_next(900, 600)
             if robot.get_position().equals(artifact.get_position()):
-                artifact = cast.remove_actor("artifacts", artifact)
-                # message = artifact.get_message()# TENGO QUE COLOCAR ESTO FUERA DEL IF PARA QUE SIEMPRE MUESTRE EL RESULTADO AQUI TENGO QUE BUSCAR UNA FORMA DE SUMAR LOS PUNTOS CUANDO CAIGAN LOS ARTIFACS SOBRE EL ROBOT
-                # banner.set_text(message)
+                artifact.move_next(900, 1)
+                self._total_points += artifact.calculate_points()
+        
+        banner.set_text(f"Points: {self._total_points}")
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
