@@ -16,6 +16,7 @@ class Director:
         Args:
             keyboard_service (KeyboardService): An instance of KeyboardService.
             video_service (VideoService): An instance of VideoService.
+            total_points (int): The total points the player gains.
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
