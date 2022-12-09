@@ -55,7 +55,7 @@ def main():
     # create the artifacts
     for n in range(DEFAULT_ARTIFACTS):
         gem = "*"
-        rock = "▯"
+        rock = "O"
         figures = [gem, rock]
         text = random.choice(figures)
 
